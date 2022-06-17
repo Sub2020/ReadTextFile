@@ -1,12 +1,29 @@
 package readfile;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.*;
 
-public class ReadTextFile {
+class ReadTextFile {
 
-    /*
+    public static void main(String[] args) throws Exception {
+
+        // File path is passed as parameter
+        File file = new File("C:src/readfile/file-data");
+
+        BufferedReader br
+                = new BufferedReader(new FileReader(file));
+
+
+        String st;
+
+        while ((st = br.readLine()) != null)
+
+            // Print the string
+            System.out.println(st);
+    }
+}
+        /*
      *
      * read the below textFile and print to console:
      * file-dat.txt
@@ -21,11 +38,3 @@ public class ReadTextFile {
      * find and print out the number of the words in th text
      *
      */
-
-    public static void main(String[] args) throws FileNotFoundException {
-
-        PrintStream out = new PrintStream(new FileOutputStream("file-data.txt"));
-        System.setOut(out);
-    }
-}
-
