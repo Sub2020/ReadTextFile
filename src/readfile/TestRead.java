@@ -1,29 +1,54 @@
 package readfile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.io.IOException;
 
-class ReadTextFile {
+public class TestRead {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String args[])throws IOException{
 
-        // File path is passed as parameter
-        File file = new File("C:src/readfile/file-data");
+        String content = new String();
 
-        BufferedReader br
-                = new BufferedReader(new FileReader(file));
+        int count=1;
 
+        File file = new File("C:\\Users\\Devraj\\IdeaProjects\\ReadTextFile\\src\\readfile\\file-data");
+        LinkedList<String> list = new LinkedList<String>();
 
-        String st;
+        try {
+            Scanner sc;
+            sc = new Scanner(new FileInputStream(file));
+            while (sc.hasNextLine()){
+                content = sc.nextLine();
+                list.add(content);
+            }
+            sc.close();
+        }catch(FileNotFoundException fnf){
+            fnf.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("\nProgram terminated Safely...");
+        }
 
-        while ((st = br.readLine()) != null)
-
-            // Print the string
-            System.out.println(st);
+        Collections.reverse(list);
+        Iterator i = list.iterator();
+        while (i.hasNext()) {
+            System.out.print("Node " + (count++) + " : ");
+            System.out.println(i.next());
+        }
     }
 }
-        /*
+
+
+
+
+
+
+                /*
      *
      * read the below textFile and print to console:
      * file-dat.txt
